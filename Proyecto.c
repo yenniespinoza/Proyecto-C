@@ -47,7 +47,7 @@ int int main(int argc, char argv[]) {
   boton_reinicio = GTK_WIDGET(gtk_builder_get_object(builder, "reiniciar "));
 
   /*Conectar las señales de los botones del panel 3x3 */
-  g_signal_connect(boton_1, "clicked", G_CALLBACK(Funcion_Pendiente), );
+  g_signal_connect(boton_1, "clicked", G_CALLBACK(on_clicked_boton_1), );
   g_signal_connect(boton_2, "clicked", G_CALLBACK(Funcion_Pendiente), );
   g_signal_connect(boton_3, "clicked", G_CALLBACK(Funcion_Pendiente), );
   g_signal_connect(boton_4, "clicked", G_CALLBACK(Funcion_Pendiente), );
