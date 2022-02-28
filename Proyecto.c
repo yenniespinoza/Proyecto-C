@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<gtk/gkt.h>
+
 void on_clicked_boton_1 (Gtkwidget* widget, gpointer data){
   /*Asignarle una imagen al boton_1 */
   GtkWidget *image = gtk_image_new_from_file ("...");
@@ -8,7 +9,6 @@ void on_clicked_boton_1 (Gtkwidget* widget, gpointer data){
   gtk_button_set_image (GTK_BUTTON (button), image);  
 
 }
-
 
 int int main(int argc, char argv[]) {
   GtkBuilder*builder;
