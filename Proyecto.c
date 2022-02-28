@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#include<gtk/gkt.h>
 int int main(int argc, char argv[]) {
   GtkBuilder*builder;
   Gtkwidget* window;
