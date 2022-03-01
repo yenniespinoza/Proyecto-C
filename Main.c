@@ -1,20 +1,29 @@
-// #include<stdio.h>
 #include <gtk/gtk.h>
+void cambio_mas();
+void cambio_menos();
+int contador = 1;
 
 int on_clicked_boton_equis (GtkWidget* widget, gpointer data){
   // Asignarle una imagen al boton_1
   GtkButton *boton = (GtkButton*) data;
-  GtkWidget *image = gtk_image_new_from_file ("equis.png");
-  // GtkWidget *button = gtk_button_new ();
-  gtk_button_set_image (GTK_BUTTON (boton), image);
+  GtkWidget *image_equis = gtk_image_new_from_file ("equis.png");
+  GtkWidget *image_circulo = gtk_image_new_from_file ("circulo.png");
+
+  if (contador == 1){
+    gtk_button_set_image (GTK_BUTTON (boton), image_equis);
+    contador --;
+  } else {
+    gtk_button_set_image (GTK_BUTTON (boton), image_circulo);
+    contador ++;
+  }
 }
 
 int on_clicked_boton_circulo (GtkWidget* widget, gpointer data){
-  // Asignarle una imagen al boton_1
+
   GtkButton *boton = (GtkButton*) data;
   GtkWidget *image = gtk_image_new_from_file ("circulo.png");
-  // GtkWidget *button = gtk_button_new ();
   gtk_button_set_image (GTK_BUTTON (boton), image);
+  contador ++;
 }
 
 int main(int argc, char* argv[]) {
@@ -31,7 +40,6 @@ int main(int argc, char* argv[]) {
   GtkWidget* boton_8;
   GtkWidget* boton_9;
 
-  // Gtkwidget* boton_marcador1, boton_marcador2, boton_reinicio;
   gtk_init(&argc, &argv);
 
   builder = gtk_builder_new_from_file (
@@ -57,7 +65,7 @@ int main(int argc, char* argv[]) {
   boton_8 = GTK_WIDGET(gtk_builder_get_object(builder, "boton_8"));
   boton_9 = GTK_WIDGET(gtk_builder_get_object(builder, "boton_9"));
 
-  //GtkWidget *image = gtk_image_new_from_file ("/home/allanaq/Desktop/Programacion/Proyecto-C/equis.png");
+
   GtkWidget *image_1 = gtk_image_new_from_file ("gato.png");
   GtkWidget *image_2 = gtk_image_new_from_file ("gato.png");
   GtkWidget *image_3 = gtk_image_new_from_file ("gato.png");
@@ -78,6 +86,15 @@ int main(int argc, char* argv[]) {
   gtk_button_set_image (GTK_BUTTON (boton_8), image_8);
   gtk_button_set_image (GTK_BUTTON (boton_9), image_9);
 
+  g_signal_connect(boton_1, "clicked", G_CALLBACK(on_clicked_boton_equis), boton_1);
+  g_signal_connect(boton_2, "clicked", G_CALLBACK(on_clicked_boton_equis), boton_2);
+  g_signal_connect(boton_3, "clicked", G_CALLBACK(on_clicked_boton_equis), boton_3);
+  g_signal_connect(boton_4, "clicked", G_CALLBACK(on_clicked_boton_equis), boton_4);
+  g_signal_connect(boton_5, "clicked", G_CALLBACK(on_clicked_boton_equis), boton_5);
+  g_signal_connect(boton_6, "clicked", G_CALLBACK(on_clicked_boton_equis), boton_6);
+  g_signal_connect(boton_7, "clicked", G_CALLBACK(on_clicked_boton_equis), boton_7);
+  g_signal_connect(boton_8, "clicked", G_CALLBACK(on_clicked_boton_equis), boton_8);
+  g_signal_connect(boton_9, "clicked", G_CALLBACK(on_clicked_boton_equis), boton_9);
 
   gtk_widget_show_all(window);
   gtk_main ();
@@ -85,3 +102,4 @@ int main(int argc, char* argv[]) {
   return 0;
 
 }
+
