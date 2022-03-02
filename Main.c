@@ -445,7 +445,7 @@ int main(int argc, char* argv[]) {
   gtk_init(&argc, &argv);
 
   builder = gtk_builder_new_from_file (
-    "jee.glade"
+    "ventana.glade"
   );
 
   window = GTK_WIDGET (
