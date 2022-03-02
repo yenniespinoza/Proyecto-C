@@ -1,8 +1,11 @@
 #include <gtk/gtk.h>
+#include <stdbool.h>
 // int on_clicked_boton_equis(GtkWidget*, gpointer);
 int revisar(gpointer lista);
 int contador = 1;
 int matriz[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+int clicks = 0;
+bool ganador = false;
 
 int func_boton1(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
@@ -20,8 +23,8 @@ int func_boton1(GtkWidget* widget, gpointer lista){
     contador ++;
     matriz[0][0] = 2;
   }
-  printf("Valor: %d\n", matriz[0][0]);
   gtk_widget_set_sensitive ((GtkWidget*) boton, FALSE);
+  clicks++;
   revisar(lista);
 }
 
@@ -41,8 +44,9 @@ int func_boton2(GtkWidget* widget, gpointer lista){
     contador ++;
     matriz[0][1] = 2;
   }
-  printf("Valor: %d\n", matriz[0][1]);
+
   gtk_widget_set_sensitive ((GtkWidget*) boton, FALSE);
+  clicks++;
   revisar(lista);
 }
 
@@ -62,8 +66,9 @@ int func_boton3(GtkWidget* widget, gpointer lista){
     contador ++;
     matriz[0][2] = 2;
   }
-  printf("Valor: %d\n", matriz[0][2]);
+
   gtk_widget_set_sensitive ((GtkWidget*) boton, FALSE);
+  clicks++;
   revisar(lista);
 }
 
@@ -83,8 +88,9 @@ int func_boton4(GtkWidget* widget, gpointer lista){
     contador ++;
     matriz[1][0] = 2;
   }
-  printf("Valor: %d\n", matriz[1][0]);
+
   gtk_widget_set_sensitive ((GtkWidget*) boton, FALSE);
+  clicks++;
   revisar(lista);
 }
 
@@ -104,8 +110,9 @@ int func_boton5(GtkWidget* widget, gpointer lista){
     contador ++;
     matriz[1][1] = 2;
   }
-  printf("Valor: %d\n", matriz[1][1]);
+
   gtk_widget_set_sensitive ((GtkWidget*) boton, FALSE);
+  clicks++;
   revisar(lista);
 }
 
@@ -125,8 +132,9 @@ int func_boton6(GtkWidget* widget, gpointer lista){
     contador ++;
     matriz[1][2] = 2;
   }
-  printf("Valor: %d\n", matriz[1][2]);
+
   gtk_widget_set_sensitive ((GtkWidget*) boton, FALSE);
+  clicks++;
   revisar(lista);
 }
 
@@ -146,8 +154,9 @@ int func_boton7(GtkWidget* widget, gpointer lista){
     contador ++;
     matriz[2][0] = 2;
   }
-  printf("Valor: %d\n", matriz[2][0]);
+
   gtk_widget_set_sensitive ((GtkWidget*) boton, FALSE);
+  clicks++;
   revisar(lista);
 }
 
@@ -167,8 +176,9 @@ int func_boton8(GtkWidget* widget, gpointer lista){
     contador ++;
     matriz[2][1] = 2;
   }
-  printf("Valor: %d\n", matriz[2][1]);
+
   gtk_widget_set_sensitive ((GtkWidget*) boton, FALSE);
+  clicks++;
   revisar(lista);
 }
 
@@ -189,12 +199,14 @@ int func_boton9(GtkWidget* widget, gpointer lista){
     contador ++;
     matriz[2][2] = 2;
   }
-  printf("Valor: %d\n", matriz[2][2]);
+
   gtk_widget_set_sensitive ((GtkWidget*) boton, FALSE);
+  clicks++;
   revisar(lista);
 }
 
 int revisar(gpointer lista){
+
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
   GtkButton *boton_1 = (GtkButton*) lista_widget[0];
@@ -206,69 +218,149 @@ int revisar(gpointer lista){
   GtkButton *boton_7 = (GtkButton*) lista_widget[6];
   GtkButton *boton_8 = (GtkButton*) lista_widget[7];
   GtkButton *boton_9 = (GtkButton*) lista_widget[8];
-  GtkWidget *image_win_1 = gtk_image_new_from_file("Gato_encerrado.JPG");
-  GtkWidget *image_win_2 = gtk_image_new_from_file("Gato_encerrado.JPG");
-  GtkWidget *image_win_3 = gtk_image_new_from_file("Gato_encerrado.JPG");
-  GtkWidget *image_win_4 = gtk_image_new_from_file("Gato_encerrado.JPG");
-  GtkWidget *image_win_5 = gtk_image_new_from_file("Gato_encerrado.JPG");
-  GtkWidget *image_win_6 = gtk_image_new_from_file("Gato_encerrado.JPG");
-  GtkWidget *image_win_7 = gtk_image_new_from_file("Gato_encerrado.JPG");
-  GtkWidget *image_win_8 = gtk_image_new_from_file("Gato_encerrado.JPG");
-  GtkWidget *image_win_9 = gtk_image_new_from_file("Gato_encerrado.JPG");
+  GtkWidget *image_win_1 = gtk_image_new_from_file("Gato_encerrado.png");
+  GtkWidget *image_win_2 = gtk_image_new_from_file("Gato_encerrado.png");
+  GtkWidget *image_win_3 = gtk_image_new_from_file("Gato_encerrado.png");
+  GtkWidget *image_win_4 = gtk_image_new_from_file("Gato_encerrado.png");
+  GtkWidget *image_win_5 = gtk_image_new_from_file("Gato_encerrado.png");
+  GtkWidget *image_win_6 = gtk_image_new_from_file("Gato_encerrado.png");
+  GtkWidget *image_win_7 = gtk_image_new_from_file("Gato_encerrado.png");
+  GtkWidget *image_win_8 = gtk_image_new_from_file("Gato_encerrado.png");
+  GtkWidget *image_win_9 = gtk_image_new_from_file("Gato_encerrado.png");
 
   if (matriz[0][0] == 1 && matriz[0][1] == 1 && matriz[0][2] == 1){
-    printf("Ganaron las equis\n");
-    gtk_label_set_text(label, "Ganan las equis.");
+    gtk_label_set_text(label, "Ganan las equis!");
     gtk_button_set_image(boton_1, image_win_1);
     gtk_button_set_image(boton_2, image_win_2);
     gtk_button_set_image(boton_3, image_win_3);
+    ganador = true;
 
   } else if (matriz[1][0] == 1 && matriz[1][1] == 1 && matriz[1][2] == 1){
-    printf("Ganarons las equis\n");
-    gtk_label_set_text(label, "Ganan las equis.");
+    gtk_label_set_text(label, "Ganan las equis!");
     gtk_button_set_image(boton_4, image_win_4);
     gtk_button_set_image(boton_5, image_win_5);
     gtk_button_set_image(boton_6, image_win_6);
+    ganador = true;
 
   } else if (matriz[2][0] == 1 && matriz[2][1] == 1 && matriz[2][2] == 1){
-    gtk_label_set_text(label, "Ganan las equis.");
+    gtk_label_set_text(label, "Ganan las equis!");
     gtk_button_set_image(boton_7, image_win_7);
     gtk_button_set_image(boton_8, image_win_8);
     gtk_button_set_image(boton_9, image_win_9);
+    ganador = true;
 
   } else if (matriz[0][0] == 1 && matriz[1][0] == 1 && matriz[2][0] == 1){
-    gtk_label_set_text(label, "Ganan las equis.");
+    gtk_label_set_text(label, "Ganan las equis!");
     gtk_button_set_image(boton_1, image_win_1);
     gtk_button_set_image(boton_4, image_win_4);
     gtk_button_set_image(boton_7, image_win_7);
+    ganador = true;
 
   } else if (matriz[0][1] == 1 && matriz[1][1] == 1 && matriz[2][1] == 1){
-    gtk_label_set_text(label, "Ganan las equis.");
+    gtk_label_set_text(label, "Ganan las equis!");
     gtk_button_set_image(boton_2, image_win_2);
     gtk_button_set_image(boton_5, image_win_5);
     gtk_button_set_image(boton_8, image_win_8);
+    ganador = true;
 
   } else if (matriz[0][2] == 1 && matriz[1][2] == 1 && matriz[2][2] == 1) {
-    gtk_label_set_text(label, "Ganan las equis.");
+    gtk_label_set_text(label, "Ganan las equis!");
     gtk_button_set_image(boton_3, image_win_3);
     gtk_button_set_image(boton_6, image_win_6);
     gtk_button_set_image(boton_9, image_win_9);
+    ganador = true;
 
   } else if (matriz[0][0] == 1 && matriz[1][1] == 1 && matriz[2][2] == 1) {
-    gtk_label_set_text(label, "Ganan las equis.");
+    gtk_label_set_text(label, "Ganan las equis!");
     gtk_button_set_image(boton_1, image_win_1);
     gtk_button_set_image(boton_5, image_win_5);
     gtk_button_set_image(boton_9, image_win_9);
+    ganador = true;
 
   } else if (matriz[0][2] == 1 && matriz[1][1] == 1 && matriz[2][0] == 1){
-    gtk_label_set_text(label, "Ganan las equis.");
+    gtk_label_set_text(label, "Ganan las equis!");
     gtk_button_set_image(boton_3, image_win_3);
     gtk_button_set_image(boton_5, image_win_5);
     gtk_button_set_image(boton_7, image_win_7);
+    ganador = true;
+
+  } else if (clicks == 9){
+    gtk_label_set_text(label, "EMPATE!!!");
+  }
+
+
+  // Si ganan los círculos
+  if (matriz[0][0] == 2 && matriz[0][1] == 2 && matriz[0][2] == 2){
+    gtk_label_set_text(label, "Ganan los circulos!");
+    gtk_button_set_image(boton_1, image_win_1);
+    gtk_button_set_image(boton_2, image_win_2);
+    gtk_button_set_image(boton_3, image_win_3);
+    ganador = true;
+
+  } else if (matriz[1][0] == 2 && matriz[1][1] == 2 && matriz[1][2] == 2){
+    gtk_label_set_text(label, "Ganan los circulos!");
+    gtk_button_set_image(boton_4, image_win_4);
+    gtk_button_set_image(boton_5, image_win_5);
+    gtk_button_set_image(boton_6, image_win_6);
+    ganador = true;
+
+  } else if (matriz[2][0] == 2 && matriz[2][1] == 2 && matriz[2][2] == 2){
+    gtk_label_set_text(label, "Ganan los circulos!");
+    gtk_button_set_image(boton_7, image_win_7);
+    gtk_button_set_image(boton_8, image_win_8);
+    gtk_button_set_image(boton_9, image_win_9);
+    ganador = true;
+
+  } else if (matriz[0][0] == 2 && matriz[1][0] == 2 && matriz[2][0] == 2){
+    gtk_label_set_text(label, "Ganan los circulos!");
+    gtk_button_set_image(boton_1, image_win_1);
+    gtk_button_set_image(boton_4, image_win_4);
+    gtk_button_set_image(boton_7, image_win_7);
+    ganador = true;
+
+  } else if (matriz[0][1] == 2 && matriz[1][1] == 2 && matriz[2][1] == 2){
+    gtk_label_set_text(label, "Ganan los circulos!");
+    gtk_button_set_image(boton_2, image_win_2);
+    gtk_button_set_image(boton_5, image_win_5);
+    gtk_button_set_image(boton_8, image_win_8);
+    ganador = true;
+
+  } else if (matriz[0][2] == 2 && matriz[1][2] == 2 && matriz[2][2] == 2) {
+    gtk_label_set_text(label, "Ganan los circulos!");
+    gtk_button_set_image(boton_3, image_win_3);
+    gtk_button_set_image(boton_6, image_win_6);
+    gtk_button_set_image(boton_9, image_win_9);
+    ganador = true;
+
+  } else if (matriz[0][0] == 2 && matriz[1][1] == 2 && matriz[2][2] == 2) {
+    gtk_label_set_text(label, "Ganan los circulos!");
+    gtk_button_set_image(boton_1, image_win_1);
+    gtk_button_set_image(boton_5, image_win_5);
+    gtk_button_set_image(boton_9, image_win_9);
+    ganador = true;
+
+  } else if (matriz[0][2] == 2 && matriz[1][1] == 2 && matriz[2][0] == 2){
+    gtk_label_set_text(label, "Ganan los circulos!");
+    gtk_button_set_image(boton_3, image_win_3);
+    gtk_button_set_image(boton_5, image_win_5);
+    gtk_button_set_image(boton_7, image_win_7);
+    ganador = true;
 
   }
 
+  if (ganador == true){
+    gtk_widget_set_sensitive ((GtkWidget*) boton_1, FALSE);
+    gtk_widget_set_sensitive ((GtkWidget*) boton_2, FALSE);
+    gtk_widget_set_sensitive ((GtkWidget*) boton_3, FALSE);
+    gtk_widget_set_sensitive ((GtkWidget*) boton_4, FALSE);
+    gtk_widget_set_sensitive ((GtkWidget*) boton_5, FALSE);
+    gtk_widget_set_sensitive ((GtkWidget*) boton_6, FALSE);
+    gtk_widget_set_sensitive ((GtkWidget*) boton_7, FALSE);
+    gtk_widget_set_sensitive ((GtkWidget*) boton_8, FALSE);
+    gtk_widget_set_sensitive ((GtkWidget*) boton_9, FALSE);
+  }
 }
+
 int func_boton_r(GtkWidget* widget, gpointer lista_2){
   //recibe: los botones, imagenes del gato, label, matriz
   GtkWidget **lista_2_widget = (GtkWidget**) lista_2;
@@ -301,7 +393,9 @@ int func_boton_r(GtkWidget* widget, gpointer lista_2){
   						matriz [i][j]=0;
             }
   }
-  contador=1;
+  contador = 1;
+  clicks = 0;
+  ganador = false;
 
   gtk_button_set_image (GTK_BUTTON (boton_1), image_1);
   gtk_button_set_image (GTK_BUTTON (boton_2), image_2);
@@ -312,6 +406,18 @@ int func_boton_r(GtkWidget* widget, gpointer lista_2){
   gtk_button_set_image (GTK_BUTTON (boton_7), image_7);
   gtk_button_set_image (GTK_BUTTON (boton_8), image_8);
   gtk_button_set_image (GTK_BUTTON (boton_9), image_9);
+
+  gtk_widget_set_sensitive ((GtkWidget*) boton_1, TRUE);
+  gtk_widget_set_sensitive ((GtkWidget*) boton_2, TRUE);
+  gtk_widget_set_sensitive ((GtkWidget*) boton_3, TRUE);
+  gtk_widget_set_sensitive ((GtkWidget*) boton_4, TRUE);
+  gtk_widget_set_sensitive ((GtkWidget*) boton_5, TRUE);
+  gtk_widget_set_sensitive ((GtkWidget*) boton_6, TRUE);
+  gtk_widget_set_sensitive ((GtkWidget*) boton_7, TRUE);
+  gtk_widget_set_sensitive ((GtkWidget*) boton_8, TRUE);
+  gtk_widget_set_sensitive ((GtkWidget*) boton_9, TRUE);
+
+  gtk_label_set_text(label, "Sigue jugando!");
 
 }
 
@@ -413,3 +519,4 @@ int main(int argc, char* argv[]) {
   return 0;
 
 }
+
