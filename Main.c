@@ -1,12 +1,12 @@
 #include <gtk/gtk.h>
 #include <stdbool.h>
-
+//variables globales
 int revisar(gpointer lista);
 int contador = 1;
 int matriz[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 int clicks = 0;
 bool ganador = false;
-
+//funcion para el boton 1
 int func_boton1(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
@@ -27,7 +27,7 @@ int func_boton1(GtkWidget* widget, gpointer lista){
   clicks++;
   revisar(lista);
 }
-
+//funcion para el boton 2
 int func_boton2(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
@@ -49,7 +49,7 @@ int func_boton2(GtkWidget* widget, gpointer lista){
   clicks++;
   revisar(lista);
 }
-
+//funcion para el boton 3
 int func_boton3(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
@@ -71,7 +71,7 @@ int func_boton3(GtkWidget* widget, gpointer lista){
   clicks++;
   revisar(lista);
 }
-
+//funcion para el boton 4
 int func_boton4(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
@@ -93,7 +93,7 @@ int func_boton4(GtkWidget* widget, gpointer lista){
   clicks++;
   revisar(lista);
 }
-
+//funcion para el boton 5
 int func_boton5(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
@@ -115,7 +115,7 @@ int func_boton5(GtkWidget* widget, gpointer lista){
   clicks++;
   revisar(lista);
 }
-
+//funcion para el boton 6
 int func_boton6(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
@@ -137,7 +137,7 @@ int func_boton6(GtkWidget* widget, gpointer lista){
   clicks++;
   revisar(lista);
 }
-
+//funcion para el boton 7
 int func_boton7(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
@@ -159,7 +159,7 @@ int func_boton7(GtkWidget* widget, gpointer lista){
   clicks++;
   revisar(lista);
 }
-
+//funcion para el boton 8
 int func_boton8(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
@@ -181,7 +181,7 @@ int func_boton8(GtkWidget* widget, gpointer lista){
   clicks++;
   revisar(lista);
 }
-
+//funcion para el boton 9
 int func_boton9(GtkWidget* widget, gpointer lista){
   GtkWidget **lista_widget = (GtkWidget**) lista;
   GtkLabel *label = (GtkLabel*) lista_widget[9];
@@ -204,7 +204,7 @@ int func_boton9(GtkWidget* widget, gpointer lista){
   clicks++;
   revisar(lista);
 }
-
+//Funcion revisar, se empleo para revisar quien iba a hacer el ganador 
 int revisar(gpointer lista){
 
   GtkWidget **lista_widget = (GtkWidget**) lista;
@@ -227,7 +227,7 @@ int revisar(gpointer lista){
   GtkWidget *image_win_7 = gtk_image_new_from_file("Gato_encerrado.png");
   GtkWidget *image_win_8 = gtk_image_new_from_file("Gato_encerrado.png");
   GtkWidget *image_win_9 = gtk_image_new_from_file("Gato_encerrado.png");
-
+  //Logica para el ganador de la figura de equis, con matrices
   if (matriz[0][0] == 1 && matriz[0][1] == 1 && matriz[0][2] == 1){
     gtk_label_set_text(label, "  Ganan las equis!  ");
     gtk_button_set_image(boton_1, image_win_1);
@@ -289,7 +289,7 @@ int revisar(gpointer lista){
   }
 
 
-  // Si ganan los círculos
+  //Logica para el ganador de la figura circulo, con matrices
   if (matriz[0][0] == 2 && matriz[0][1] == 2 && matriz[0][2] == 2){
     gtk_label_set_text(label, " Ganan los circulos!");
     gtk_button_set_image(boton_1, image_win_1);
@@ -347,7 +347,7 @@ int revisar(gpointer lista){
     ganador = true;
 
   }
-
+  // Si el ganador es igual a true, todos los botones se bloquean
   if (ganador == true){
     gtk_widget_set_sensitive ((GtkWidget*) boton_1, FALSE);
     gtk_widget_set_sensitive ((GtkWidget*) boton_2, FALSE);
@@ -360,21 +360,21 @@ int revisar(gpointer lista){
     gtk_widget_set_sensitive ((GtkWidget*) boton_9, FALSE);
   }
 }
-
-int func_boton_r(GtkWidget* widget, gpointer lista_2){
+//Funcion para el boton de reinicio
+int func_boton_r(GtkWidget* widget, gpointer lista){
   //recibe: los botones, imagenes del gato, label, matriz
-  GtkWidget **lista_2_widget = (GtkWidget**) lista_2;
-  GtkLabel *label = (GtkLabel*) lista_2_widget[9];
+  GtkWidget **lista_widget = (GtkWidget**) lista;
+  GtkLabel *label = (GtkLabel*) lista_widget[9];
   //Botones
-  GtkButton *boton_1 = (GtkButton*) lista_2_widget[0];
-  GtkButton *boton_2 = (GtkButton*) lista_2_widget[1];
-  GtkButton *boton_3 = (GtkButton*) lista_2_widget[2];
-  GtkButton *boton_4 = (GtkButton*) lista_2_widget[3];
-  GtkButton *boton_5 = (GtkButton*) lista_2_widget[4];
-  GtkButton *boton_6 = (GtkButton*) lista_2_widget[5];
-  GtkButton *boton_7 = (GtkButton*) lista_2_widget[6];
-  GtkButton *boton_8 = (GtkButton*) lista_2_widget[7];
-  GtkButton *boton_9 = (GtkButton*) lista_2_widget[8];
+  GtkButton *boton_1 = (GtkButton*) lista_widget[0];
+  GtkButton *boton_2 = (GtkButton*) lista_widget[1];
+  GtkButton *boton_3 = (GtkButton*) lista_widget[2];
+  GtkButton *boton_4 = (GtkButton*) lista_widget[3];
+  GtkButton *boton_5 = (GtkButton*) lista_widget[4];
+  GtkButton *boton_6 = (GtkButton*) lista_widget[5];
+  GtkButton *boton_7 = (GtkButton*) lista_widget[6];
+  GtkButton *boton_8 = (GtkButton*) lista_widget[7];
+  GtkButton *boton_9 = (GtkButton*) lista_widget[8];
  //Imagenes del gato
  GtkWidget *image_1 = gtk_image_new_from_file ("gato.png");
  GtkWidget *image_2 = gtk_image_new_from_file ("gato.png");
@@ -393,6 +393,7 @@ int func_boton_r(GtkWidget* widget, gpointer lista_2){
   						matriz [i][j]=0;
             }
   }
+  //Se llama estas variables para que se inicialicen
   contador = 1;
   clicks = 0;
   ganador = false;
@@ -418,13 +419,10 @@ int func_boton_r(GtkWidget* widget, gpointer lista_2){
   gtk_widget_set_sensitive ((GtkWidget*) boton_9, TRUE);
 
   gtk_label_set_text(label, "   Sigue jugando!   ");
-
 }
 
-
-
 int main(int argc, char* argv[]) {
-
+  //variables
   GtkBuilder* builder;
   GtkWidget* window;
   GtkWidget* boton_1;
@@ -441,7 +439,7 @@ int main(int argc, char* argv[]) {
 
 
   gtk_init(&argc, &argv);
-
+  //Se llama el archivo glade
   builder = gtk_builder_new_from_file (
     "ventana.glade"
   );
@@ -449,6 +447,7 @@ int main(int argc, char* argv[]) {
   window = GTK_WIDGET (
       gtk_builder_get_object(builder, "main_window")
   );
+  //Señal para que la ventana se cierre
   g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
 
@@ -465,12 +464,11 @@ int main(int argc, char* argv[]) {
   boton_8 = GTK_WIDGET(gtk_builder_get_object(builder, "boton_8"));
   boton_9 = GTK_WIDGET(gtk_builder_get_object(builder, "boton_9"));
 
-  //Comentario
+  //Label del mensaje, ganador e instrucciones
   label = GTK_WIDGET(gtk_builder_get_object(builder, "label_1"));
-
+  //Boton de reinicio
   boton_r = GTK_WIDGET(gtk_builder_get_object(builder, "boton_r"));
-
-
+  //Se llama la imagen del gato principal
   GtkWidget *image_1 = gtk_image_new_from_file ("gato.png");
   GtkWidget *image_2 = gtk_image_new_from_file ("gato.png");
   GtkWidget *image_3 = gtk_image_new_from_file ("gato.png");
@@ -480,8 +478,7 @@ int main(int argc, char* argv[]) {
   GtkWidget *image_7 = gtk_image_new_from_file ("gato.png");
   GtkWidget *image_8 = gtk_image_new_from_file ("gato.png");
   GtkWidget *image_9 = gtk_image_new_from_file ("gato.png");
-
-
+  //Se establece la imagen del gato principal en cada uno de los 9 botones de la matriz
   gtk_button_set_image (GTK_BUTTON (boton_1), image_1);
   gtk_button_set_image (GTK_BUTTON (boton_2), image_2);
   gtk_button_set_image (GTK_BUTTON (boton_3), image_3);
@@ -491,11 +488,9 @@ int main(int argc, char* argv[]) {
   gtk_button_set_image (GTK_BUTTON (boton_7), image_7);
   gtk_button_set_image (GTK_BUTTON (boton_8), image_8);
   gtk_button_set_image (GTK_BUTTON (boton_9), image_9);
-
+  //se crea un array con los bonotes y el label para llamarlos fuera del int main
   GtkWidget* lista[19] = {boton_1, boton_2, boton_3, boton_4, boton_5, boton_6, boton_7, boton_8, boton_9, label};
-
-  GtkWidget* lista_2[10] = {boton_1, boton_2, boton_3, boton_4, boton_5, boton_6, boton_7, boton_8, boton_9, label};
-
+  
   g_signal_connect(boton_1, "clicked", G_CALLBACK(func_boton1), lista);
   g_signal_connect(boton_2, "clicked", G_CALLBACK(func_boton2), lista);
   g_signal_connect(boton_3, "clicked", G_CALLBACK(func_boton3), lista);
@@ -505,7 +500,7 @@ int main(int argc, char* argv[]) {
   g_signal_connect(boton_7, "clicked", G_CALLBACK(func_boton7), lista);
   g_signal_connect(boton_8, "clicked", G_CALLBACK(func_boton8), lista);
   g_signal_connect(boton_9, "clicked", G_CALLBACK(func_boton9), lista);
-  g_signal_connect(boton_r, "clicked", G_CALLBACK(func_boton_r), lista_2);
+  g_signal_connect(boton_r, "clicked", G_CALLBACK(func_boton_r), lista);
 
 
 
