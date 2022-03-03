@@ -1,6 +1,6 @@
 #include <gtk/gtk.h>
 #include <stdbool.h>
-// int on_clicked_boton_equis(GtkWidget*, gpointer);
+
 int revisar(gpointer lista);
 int contador = 1;
 int matriz[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
@@ -229,63 +229,63 @@ int revisar(gpointer lista){
   GtkWidget *image_win_9 = gtk_image_new_from_file("Gato_encerrado.png");
 
   if (matriz[0][0] == 1 && matriz[0][1] == 1 && matriz[0][2] == 1){
-    gtk_label_set_text(label, "Ganan las equis!");
+    gtk_label_set_text(label, " Ganan las equis!  ");
     gtk_button_set_image(boton_1, image_win_1);
     gtk_button_set_image(boton_2, image_win_2);
     gtk_button_set_image(boton_3, image_win_3);
     ganador = true;
 
   } else if (matriz[1][0] == 1 && matriz[1][1] == 1 && matriz[1][2] == 1){
-    gtk_label_set_text(label, "Ganan las equis!");
+    gtk_label_set_text(label, " Ganan las equis!  ");
     gtk_button_set_image(boton_4, image_win_4);
     gtk_button_set_image(boton_5, image_win_5);
     gtk_button_set_image(boton_6, image_win_6);
     ganador = true;
 
   } else if (matriz[2][0] == 1 && matriz[2][1] == 1 && matriz[2][2] == 1){
-    gtk_label_set_text(label, "Ganan las equis!");
+    gtk_label_set_text(label, " Ganan las equis!  ");
     gtk_button_set_image(boton_7, image_win_7);
     gtk_button_set_image(boton_8, image_win_8);
     gtk_button_set_image(boton_9, image_win_9);
     ganador = true;
 
   } else if (matriz[0][0] == 1 && matriz[1][0] == 1 && matriz[2][0] == 1){
-    gtk_label_set_text(label, "Ganan las equis!");
+    gtk_label_set_text(label, " Ganan las equis!  ");
     gtk_button_set_image(boton_1, image_win_1);
     gtk_button_set_image(boton_4, image_win_4);
     gtk_button_set_image(boton_7, image_win_7);
     ganador = true;
 
   } else if (matriz[0][1] == 1 && matriz[1][1] == 1 && matriz[2][1] == 1){
-    gtk_label_set_text(label, "Ganan las equis!");
+    gtk_label_set_text(label, " Ganan las equis!  ");
     gtk_button_set_image(boton_2, image_win_2);
     gtk_button_set_image(boton_5, image_win_5);
     gtk_button_set_image(boton_8, image_win_8);
     ganador = true;
 
   } else if (matriz[0][2] == 1 && matriz[1][2] == 1 && matriz[2][2] == 1) {
-    gtk_label_set_text(label, "Ganan las equis!");
+    gtk_label_set_text(label, " Ganan las equis!  ");
     gtk_button_set_image(boton_3, image_win_3);
     gtk_button_set_image(boton_6, image_win_6);
     gtk_button_set_image(boton_9, image_win_9);
     ganador = true;
 
   } else if (matriz[0][0] == 1 && matriz[1][1] == 1 && matriz[2][2] == 1) {
-    gtk_label_set_text(label, "Ganan las equis!");
+    gtk_label_set_text(label, " Ganan las equis!  ");
     gtk_button_set_image(boton_1, image_win_1);
     gtk_button_set_image(boton_5, image_win_5);
     gtk_button_set_image(boton_9, image_win_9);
     ganador = true;
 
   } else if (matriz[0][2] == 1 && matriz[1][1] == 1 && matriz[2][0] == 1){
-    gtk_label_set_text(label, "Ganan las equis!");
+    gtk_label_set_text(label, " Ganan las equis!  ");
     gtk_button_set_image(boton_3, image_win_3);
     gtk_button_set_image(boton_5, image_win_5);
     gtk_button_set_image(boton_7, image_win_7);
     ganador = true;
 
   } else if (clicks == 9){
-    gtk_label_set_text(label, "EMPATE!!!");
+    gtk_label_set_text(label, "     EMPATE!!!     ");
   }
 
 
@@ -437,10 +437,8 @@ int main(int argc, char* argv[]) {
   GtkWidget* boton_8;
   GtkWidget* boton_9;
   GtkWidget* boton_r;
-  //GtkWidget* boton_10;
   GtkWidget* label;
 
-  // GtkWidget* label;
 
   gtk_init(&argc, &argv);
 
@@ -466,10 +464,10 @@ int main(int argc, char* argv[]) {
   boton_7 = GTK_WIDGET(gtk_builder_get_object(builder, "boton_7"));
   boton_8 = GTK_WIDGET(gtk_builder_get_object(builder, "boton_8"));
   boton_9 = GTK_WIDGET(gtk_builder_get_object(builder, "boton_9"));
-  //boton_10 = GTK_WIDGET(gtk_builder_get_object(builder, "boton_10"));
+
   //Comentario
   label = GTK_WIDGET(gtk_builder_get_object(builder, "label_1"));
-  //gtk_label_set_text(label, "Ganan las equis.");
+
   boton_r = GTK_WIDGET(gtk_builder_get_object(builder, "boton_r"));
 
 
@@ -509,8 +507,6 @@ int main(int argc, char* argv[]) {
   g_signal_connect(boton_9, "clicked", G_CALLBACK(func_boton9), lista);
   g_signal_connect(boton_r, "clicked", G_CALLBACK(func_boton_r), lista_2);
 
-
-  // g_signal_connect(label, "populate-popup", G_CALLBACK(revisar), label);
 
 
   gtk_widget_show_all(window);
