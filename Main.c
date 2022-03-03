@@ -504,7 +504,7 @@ int main(int argc, char* argv[]) {
   gtk_button_set_image (GTK_BUTTON (boton_9), image_9);
   //se crea un array con los bonotes y el label para llamarlos fuera del int main
   GtkWidget* lista[19] = {boton_1, boton_2, boton_3, boton_4, boton_5, boton_6, boton_7, boton_8, boton_9, label};
-  
+  //Conexion de las señales de los botones
   g_signal_connect(boton_1, "clicked", G_CALLBACK(func_boton1), lista);
   g_signal_connect(boton_2, "clicked", G_CALLBACK(func_boton2), lista);
   g_signal_connect(boton_3, "clicked", G_CALLBACK(func_boton3), lista);
