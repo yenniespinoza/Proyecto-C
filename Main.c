@@ -4,7 +4,7 @@
 
                         Proyecto de C
                           JUEGO GATO
- Elaborado por:  Allan
+ Elaborado por: Allan Alvarado Quirós <allan.alvarado@ucr.ac.cr>
                 Yennifer Espinoza Fuentes  <yennifer.espinoza@ucr.ac.cr>
                 Sharlotte Orozco Rojas    <sharlotte.orozco@ucr.ac.cr>
                 
