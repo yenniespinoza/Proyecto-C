@@ -1,3 +1,17 @@
+/*                    Universidad de Costa Rica
+                 Escuela de Ingenieria Electrica
+            IE0117 Programacion Bajo Plataformas Abiertas
+
+                        Proyecto de C
+                          JUEGO GATO
+ Elaborado por:  Allan
+                Yennifer Espinoza Fuentes  <yennifer.espinoza@ucr.ac.cr>
+                Sharlotte Orozco Rojas    <sharlotte.orozco@ucr.ac.cr>
+                
+ Fecha: 03/2022
+
+ Descripcion: Juego Gato.*/
+
 #include <gtk/gtk.h>
 #include <stdbool.h>
 //variables globales
